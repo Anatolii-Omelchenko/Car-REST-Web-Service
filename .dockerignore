@@ -1,0 +1,10 @@
+.git
+.idea
+target/*
+!target/*.jar
+*.iml
+*.ipr
+*.iws
+*.class
+logs
+*.log

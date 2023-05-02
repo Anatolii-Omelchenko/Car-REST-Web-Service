@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${POSTGRES_USER:postgres}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/car_db?characterEncoding=utf8&serverTimezone=Europe/Kiev}
+    password: ${POSTGRES_PASSWORD:12345}
+  jpa:
+    properties:
+      hibernate:
+        format_sql: 'true'
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: validate
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://${auth0.domain}/
+
+server:
+  port: 7000
+
+auth0:
+  audience: ${AUTH0_AUDIENCE:http://localhost:7000}
+  domain: ${AUTH0_DOMAIN:dev-fxvgeg80ip2vtcfh.us.auth0.com}
+
+springdoc:
+    api-docs:
+      path: /openapi/api-docs
+    swagger-ui:
+      path: /openapi/index.html
+      operationsSorter: method
